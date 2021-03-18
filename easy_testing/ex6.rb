@@ -9,10 +9,10 @@ require_relative 'file_to_test'
 
 class ExceptionTest < MiniTest::Test
   def setup
-    employee = Employee.new
+    @employee = Employee.new
   end
 
   def test_no_experience_error
-    assert_raises(NoExperienceError) { employee.hire }
+    assert_raises(NoExperienceError) { @employee.hire }
   end
 end

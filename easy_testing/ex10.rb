@@ -8,11 +8,11 @@ require_relative 'file_to_test'
 
 class ElementOfList < MiniTest::Test
   def setup
-    value = 'xyz'
-    list = [123, value, 'abc']
+    @value = 'xyz'
+    @list = [123, value, 'abc']
   end
 
   def test_element_of_list
-    refute_includes(list, value)
+    refute_includes(@list, @value)
   end
 end

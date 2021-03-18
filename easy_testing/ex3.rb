@@ -8,10 +8,10 @@ require_relative 'file_to_test'
 
 class NilTest < MiniTest::Test
   def setup
-    value = nil
+    @value = nil
   end
 
   def test_nil
-    assert_nil(value)
+    assert_nil(@value)
   end
 end

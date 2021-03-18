@@ -8,10 +8,10 @@ require_relative 'file_to_test'
 
 class TestDowncase < MiniTest::Test
   def setup
-    value = XYZ
+    @value = XYZ
   end
 
   def test_downcase
-    assert_equal('xyz', value.downcase)
+    assert_equal('xyz', @value.downcase)
   end
 end

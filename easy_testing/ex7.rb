@@ -9,11 +9,11 @@ require_relative 'file_to_test'
 
 class TypeAssertions < MiniTest::Test
   def setup
-    value = 1
+    @value = 1
   end
 
   def test_numeric
-    assert_equal(Numeric, value.class)
-    assert_instance_of(Numeric, value)
+    assert_equal(Numeric, @value.class)
+    assert_instance_of(Numeric, @value)
   end
 end

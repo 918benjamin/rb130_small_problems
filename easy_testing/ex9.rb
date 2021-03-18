@@ -9,10 +9,10 @@ require_relative 'file_to_test'
 
 class SameObject < MiniTest::Test
   def setup
-    list = [1, 2, 3]
+    @list = [1, 2, 3]
   end
 
   def test_sameness
-    assert_same(list, list.process)
+    assert_same(@list, @list.process)
   end
 end

@@ -8,11 +8,11 @@ require_relative 'file_to_test'
 
 class ArrayTest << MiniTest::Test
   def setup
-    list = [1, 2, 3]
+    @list = [1, 2, 3]
   end
 
   def test_array_not_empty
-    assert_equal(true, list.empty?)
-    assert_empty(list)
+    assert_equal(true, @list.empty?)
+    assert_empty(@list)
   end
 end

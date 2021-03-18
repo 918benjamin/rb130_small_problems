@@ -9,10 +9,10 @@ require_relative 'test_to_run'
 
 class InstanceOfRelative < MiniTest::Test
   def setup
-    value = 1
+    @value = 1
   end
 
   def test_instance_of
-    assert_kind_of(Numeric, value)
+    assert_kind_of(Numeric, @value)
   end
 end

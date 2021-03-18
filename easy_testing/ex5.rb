@@ -8,10 +8,10 @@ require_relative 'file_to_test'
 
 class IncludesTest < MiniTest::Test
   def setup
-    array = ['xyz', 'abc']
+    @array = ['xyz', 'abc']
   end
 
   def test_includes_xyz
-    assert_includes(array, 'xyz')
+    assert_includes(@array, 'xyz')
   end
 end

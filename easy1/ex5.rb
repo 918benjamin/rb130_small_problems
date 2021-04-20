@@ -49,9 +49,6 @@ Algorithm:
 
 # 'Nqn Ybirynpr' == 'Ada Lovelace'
 
-require 'pry'
-require 'pry-byebug'
-
 LETTERS = ('a'..'z').to_a
 
 cipher_names = [
@@ -76,25 +73,70 @@ cipher_names = [
           'Tregehqr Oynapu'
 ]
 
-def decipher(cipher_names)
-  cipher_names.each do |cipher_name|
-    result = []
-    # binding.pry
-    cipher_name.chars.each do |char|
-      if char == ' ' || char == '-'
-        result << char
-        next
-      end
+# Attempt 1
+# def decipher(cipher_names)
+#   cipher_names.each do |cipher_name|
+#     result = []
+#     cipher_name.chars.each do |char|
+#       if char == ' ' || char == '-'
+#         result << char
+#         next
+#       end
 
-      upper = char.ord < 97
-      new_index = LETTERS.index(char.downcase) + 13
-      new_index -= 26 if new_index >= 26
-      new_char = LETTERS[new_index].clone
-      new_char.upcase! if upper
-      result << new_char
+#       upper = char.ord < 97
+#       new_index = LETTERS.index(char.downcase) + 13
+#       new_index -= 26 if new_index >= 26
+#       new_char = LETTERS[new_index].clone
+#       new_char.upcase! if upper
+#       result << new_char
+#     end
+#     puts result.join
+#   end
+# end
+
+
+# decipher(cipher_names)
+
+# Attempt 2
+def decrypt_rot13(names)
+  names.each do |name|
+    name = name.chars.map do |char|
+      if char =~ /[A-Z]/
+        new_char = char.ord + 13
+        new_char -= 26 if new_char > 90
+        new_char.chr
+      elsif char =~ /[a-z]/
+        new_char = char.ord + 13
+        new_char -= 26 if new_char > 122
+        new_char.chr
+      else
+        char
+      end
     end
-    puts result.join
+    puts name.join
   end
 end
 
-decipher(cipher_names)
+names = "Nqn Ybirynpr
+Tenpr Ubccre
+Nqryr Tbyqfgvar
+Nyna Ghevat
+Puneyrf Onoontr
+Noqhyynu Zhunzznq ova Zhfn ny-Xujnevmzv
+Wbua Ngnanfbss
+Ybvf Unvog
+Pynhqr Funaaba
+Fgrir Wbof
+Ovyy Tngrf
+Gvz Orearef-Yrr
+Fgrir Jbmavnx
+Xbaenq Mhfr
+Fve Nagbal Ubner
+Zneiva Zvafxl
+Lhxvuveb Zngfhzbgb
+Unllvz Fybavzfxv
+Tregehqr Oynapu"
+
+names = names.split("\n")
+
+decrypt_rot13(names)

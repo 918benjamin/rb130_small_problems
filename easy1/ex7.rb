@@ -21,9 +21,20 @@ all?([]) { |value| false } == true
 
 =end
 
-def all?(collection)
-  collection.each { |item| return false unless yield(item) }
-  true
+# Attempt 1
+# def all?(collection)
+#   collection.each { |item| return false unless yield(item) }
+#   true
+# end
+
+# Attempt 2
+def all?(array)
+  result = true
+  array.each do |element|
+    result = !!yield(element)
+    return result if !result
+  end
+  result
 end
 
 p all?([1, 3, 5, 6]) { |value| value.odd? } == false

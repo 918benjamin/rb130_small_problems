@@ -29,13 +29,24 @@ Algorithm:
 - return the result
 =end
 
-def divisors(num)
-  result = [1]
-  2.upto(num / 2) do |divisor|
-    result << divisor if num % divisor == 0
+# Attempt 1
+# def divisors(num)
+#   result = [1]
+#   2.upto(num / 2) do |divisor|
+#     result << divisor if num % divisor == 0
+#   end
+#   result << num unless num == 1
+#   result
+# end
+
+# Attempt 2
+def divisors(int)
+  result = []
+  1.upto(int / 2 + 1) do |num|
+    result << num if int % num == 0
   end
-  result << num unless num == 1
-  result
+  result << int
+  result.uniq
 end
 
 p divisors(1) == [1]

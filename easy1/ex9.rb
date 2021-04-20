@@ -20,7 +20,7 @@ one?([]) { |value| true }                     # -> false
 
 =end
 
-# My solution
+# My solution (Attempt 1)
 # def one?(collection)
 #   return false if collection.size == 0
 #   result = []
@@ -30,6 +30,16 @@ one?([]) { |value| true }                     # -> false
 #   end
 
 #   result.count(true) == 1
+# end
+
+# Attempt 2
+# def one?(array)
+#   true_count = 0
+#   array.each do |element|
+#     true_count += 1 if yield(element)
+#     return false if true_count > 1
+#   end
+#   true_count == 1
 # end
 
 # LS Solution

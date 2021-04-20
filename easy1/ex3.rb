@@ -19,9 +19,24 @@ Problem:
 
 =end
 
+# First attempt
+# def missing(array)
+#   return [] if array.size == 1
+#   (array[0]..array[-1]).to_a - array
+# end
+
+# Second attempt
+# def missing(array)
+#   result = []
+#   array[0].upto(array[-1]) do |num|
+#     result << num unless array.include?(num)
+#   end
+#   result
+# end
+
+# Third attempt
 def missing(array)
-  return [] if array.size == 1
-  (array[0]..array[-1]).to_a - array
+  (array[0]..array[-1]).select { |num| !array.include?(num) }
 end
 
 p missing([-3, -2, 1, 5]) == [-1, 0, 2, 3, 4]

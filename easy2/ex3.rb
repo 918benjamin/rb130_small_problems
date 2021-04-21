@@ -27,10 +27,20 @@ map([1, 3, 4]) { |value| (1..value).to_a } == [[1], [1, 2, 3], [1, 2, 3, 4]]
 
 =end
 
-def map(array)
-  array.each_with_object([]) do |element, result|
-    result << yield(element)
+# Attempt 1
+# def map(array)
+#   array.each_with_object([]) do |element, result|
+#     result << yield(element)
+#   end
+# end
+
+# Attempt 2
+def map(arr)
+  result = []
+  arr.each do |ele|
+    result << yield(ele)
   end
+  result
 end
 
 p map([1, 3, 6]) { |value| value**2 } == [1, 9, 36]

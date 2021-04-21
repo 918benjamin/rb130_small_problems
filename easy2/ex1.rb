@@ -22,14 +22,25 @@ the values at each step.
 
 =end
 
-def step(start, stop, increment)
-  result = []
-  (start..stop).each do |num|
-    next unless ((num - 1) % 3) == 0
-    yield(num)
-    result << num
+# Attempt 1
+# def step(start, stop, increment)
+#   result = []
+#   (start..stop).each do |num|
+#     next unless ((num - 1) % 3) == 0
+#     yield(num)
+#     result << num
+#   end
+#   result
+# end
+
+# Attempt 2
+def step(start, stop, inc)
+  current = start
+  while current <= stop
+    yield(current)
+    current += inc
   end
-  result
+  current
 end
 
 test = step(1, 10, 3) { |value| puts "value = #{value}" }

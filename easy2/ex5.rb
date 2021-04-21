@@ -17,15 +17,24 @@ drop_while([]) { |value| true } == []
 
 =end
 
-def drop_while(array)
-  array.each_with_object([]) do |element, object|
-    if !object.empty?
-      object << element
-      next
-    end
+# Attempt 1
+# def drop_while(array)
+#   array.each_with_object([]) do |element, object|
+#     if !object.empty?
+#       object << element
+#       next
+#     end
 
-    object << element unless yield(element)
+#     object << element unless yield(element)
+#   end
+# end
+
+# Attempt 2
+def drop_while(arr)
+  arr.each_with_index do |ele, index|
+    return arr[index..-1] unless yield(ele)
   end
+  []
 end
 
 p drop_while([1, 3, 5, 6]) { |value| value.odd? } == [6]

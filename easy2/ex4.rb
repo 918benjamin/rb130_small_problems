@@ -23,14 +23,21 @@ count(1, 3, 6) { |value| value - 6 } == 3
 
 =end
 
+# Attempt 1
+# def count(*args)
+#   total = 0
+#   args.each do |arg|
+#     total += 1 if yield(arg)
+#   end
+#   total
+# end
+
+# Attempt 2 (Only the formatting differs)
 def count(*args)
   total = 0
-  args.each do |arg|
-    total += 1 if yield(arg)
-  end
+  args.each { |ele| total += 1 if yield(ele) }
   total
 end
-
 
 p count(1, 3, 6) { |value| value.odd? } == 2
 p count(1, 3, 6) { |value| value.even? } == 1

@@ -3,7 +3,7 @@
 
 require 'minitest/autorun'
 require 'minitest/reporters'
-MiniTest::Reporters.use
+MiniTest::Reporters.use!
 
 require_relative 'file_to_test'
 

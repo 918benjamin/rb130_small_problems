@@ -23,16 +23,33 @@ max_by([]) { |value| value + 5 } == nil
 
 =end
 
+# First attempt
+# def max_by(array)
+#   ele = nil
+#   max = nil
+#   array.each_with_index do |element, index|
+#     yielded_value = yield(element)
+#     if index == 0 || max < yielded_value
+#       ele, max = element, yielded_value
+#     end
+#   end
+#   ele
+# end
+
+# Second attempt
 def max_by(array)
-  ele = nil
-  max = nil
+  return nil if array.empty?
+  max = yield(array[0])
+  max_ele = array[0]
   array.each_with_index do |element, index|
-    yielded_value = yield(element)
-    if index == 0 || max < yielded_value
-      ele, max = element, yielded_value
+    next if index == 0
+    value = yield(element)
+    if value > max
+      max_ele = element
+      max = value
     end
   end
-  ele
+  max_ele
 end
 
 

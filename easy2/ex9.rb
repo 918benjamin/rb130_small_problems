@@ -35,9 +35,18 @@ result == nil
 
 =end
 
-def each_cons(array, n=2)
-  0.upto(array.size - 2) do |index|
-    yield(array[index], array[index+1])
+# Attempt 1
+# def each_cons(array, n=2)
+#   0.upto(array.size - 2) do |index|
+#     yield(array[index], array[index+1])
+#   end
+#   nil
+# end
+
+# Attempt 2
+def each_cons(arr)
+  arr[0..-2].each_with_index do |element, index|
+    yield(element, arr[index + 1])
   end
   nil
 end

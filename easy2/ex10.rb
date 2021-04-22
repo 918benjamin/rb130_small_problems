@@ -12,9 +12,18 @@ not use any other methods that iterate through an Array or any other collection.
 
 =end
 
-def each_cons(array, n=2)
-  0.upto(array.size - n) do |index|
-    yield(*array[index, n])
+# First attempt
+# def each_cons(array, n=2)
+#   0.upto(array.size - n) do |index|
+#     yield(*array[index, n])
+#   end
+#   nil
+# end
+
+# Second attempt
+def each_cons(arr, num)
+  arr[0..-num].each_index do |index|
+    yield(*arr[index, num])
   end
   nil
 end

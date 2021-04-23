@@ -21,4 +21,11 @@ class CashRegisterTest < MiniTest::Test
     change = register.change(transaction)
     assert_equal 5, change
   end
+
+  def test_give_receipt
+    register = CashRegister.new(1000)
+    transaction = Transaction.new(25)
+    output = "You've paid $25.\n"
+    assert_output(output) { register.give_receipt(transaction) }
+  end
 end

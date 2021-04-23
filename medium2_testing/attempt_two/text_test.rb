@@ -23,6 +23,10 @@ class TestText < MiniTest::Test
     assert_equal(correct, text.swap('a', 'e'))
   end
 
+  def test_word_count
+    assert_equal(72, Text.new(@file_data).word_count)
+  end
+
   def teardown
     @file.close
   end
